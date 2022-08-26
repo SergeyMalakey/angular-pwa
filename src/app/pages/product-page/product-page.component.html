@@ -1,0 +1,13 @@
+<p>product-page works!</p>
+
+  <div class="d-flex justify-content-center align-items-center m-3">
+    <input type="text" placeholder="filter" [(ngModel)]="term">
+  </div>
+
+  <p class="text-center" *ngIf="loading">loading...</p>
+
+<app-products
+  *ngFor="let product of products | filterProducts: term"
+  [product]="product"
+>
+</app-products>

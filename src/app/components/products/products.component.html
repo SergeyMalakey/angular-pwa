@@ -1,0 +1,23 @@
+<div class="border border-dark rounded">
+  <h1>products component</h1>
+
+  <div class="d-flex justify-content-center align-items-center"
+    style="flex-direction: column">
+
+    <div style="height: 100px;width: auto">
+      <img src='{{product.image}}' alt="" class="h-100">
+    </div>
+
+    <p>{{product.price}}</p>
+
+    <p *ngIf="details">{{product.title}}</p>
+
+    <button (click)="details=!details"
+            [ngClass]="{
+        'bg-info': !details,
+        'bg-danger': details
+    }">
+      {{details ? "hide": "show"}}</button>
+  </div>
+</div>
+

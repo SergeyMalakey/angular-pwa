@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {TailboardComponent} from "./components/tailboard/tailboard.component";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { HttpClientModule} from "@angular/common/http";
 import { GlobalErrorComponent } from './components/global-error/global-error.component';
 import {FormsModule} from "@angular/forms";
 import { FilterProductsPipe } from './pipes/filter-products.pipe';
@@ -21,6 +21,8 @@ import { BoldDirectiveDirective } from './directives/bold-directive.directive';
 import { UseDirectivesComponent } from './components/use-directives/use-directives.component';
 import { UseServicesComponent } from './components/use-services/use-services.component';
 import { FormComponent } from './components/form/form.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -40,13 +42,19 @@ import { FormComponent } from './components/form/form.component';
     BoldDirectiveDirective,
     UseDirectivesComponent,
     UseServicesComponent,
-    FormComponent
+    FormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,10 +1,18 @@
-import {Component, Input} from "@angular/core";
-import {IntProduct} from "../../modules/products";
+import {Component, OnInit} from "@angular/core";
 
 @Component({
   selector: "tailboard",
   templateUrl: 'tailboard.component.html'
 })
 
-export class TailboardComponent {
+export class TailboardComponent implements OnInit{
+  user: string;
+
+  constructor() {}
+
+  ngOnInit() {
+    // todo work with localStorage
+    // localStorage.setItem('user', 'Readerstacks');
+    // console.log(localStorage.getItem('user'));
+  }
 }

@@ -15,6 +15,9 @@ export class UseServicesComponent implements OnInit {
 
   constructor(private dataService: SimpleDataService) { }
   addItem(name: string){
+    if (!name) {
+      return;
+    }
     this.dataService.addData(name);
     this.name = ""
   }
